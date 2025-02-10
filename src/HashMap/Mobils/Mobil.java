@@ -1,9 +1,15 @@
-package HashMap;
+package HashMap.Mobils;
 
 public class Mobil {
     private String model;
     private String marca;
     private int numero;
+
+    public Mobil(String marca, String model, int numero) {
+        this.marca = marca;
+        this.model = model;
+        this.numero = numero;
+    }
 
     public String getMarca() {
         return marca;
@@ -37,4 +43,5 @@ public class Mobil {
                 ", numero=" + numero +
                 '}';
     }
+
 }
