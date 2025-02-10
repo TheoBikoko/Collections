@@ -31,7 +31,10 @@ public class TestPlayerManager {
                     "g. Show best player \n" +
                     "h. Show all players \n" +
                     "i. Exit");
-            switch (input.nextLine()) {
+
+            String option = input.nextLine();
+
+            switch (option) {
                 case "a":
                     System.out.println("Please, introduce the name of the new player.");
                     String playerName = input.nextLine();
@@ -49,7 +52,7 @@ public class TestPlayerManager {
 
                 case "c":
                     System.out.println("Please, introduce the name of the player you wish to find.");
-                    manager.findPlayerWithName(input.nextLine());
+                    System.out.println(manager.findPlayerWithName(input.nextLine()));
                     break;
 
                 case "d":
@@ -59,17 +62,17 @@ public class TestPlayerManager {
 
                 case "e":
                     System.out.println("Player ranking ordered by score: ");
-                    manager.listByScore();
+                    System.out.println(manager.listByScore());
                     break;
 
                 case "f":
                     System.out.println("Please, introduce the score threshold (only players above the introduced score will show up in the list):");
-                    manager.scoreThreshold(input.nextInt());
+                    System.out.println(manager.scoreThreshold(input.nextInt()));
                     break;
 
                 case "g":
                     System.out.println("Currently, the best player is: ");
-                    manager.bestPlayer();
+                    System.out.println(manager.bestPlayer());
                     break;
 
                 case "h":

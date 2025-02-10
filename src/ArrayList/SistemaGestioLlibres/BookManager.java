@@ -42,6 +42,7 @@ public class BookManager {
             for (Book book : books) {
                 if (book.getTitle().equalsIgnoreCase(title)) {
                     book.setRating(rating);
+                    System.out.println("Rating updated succesfully.");
                 }
             }
         } else System.out.println("The rating value must be between 0 and 5.");
@@ -64,9 +65,8 @@ public class BookManager {
     }
 
     public void minRatingList(int minRating) {
-        ArrayList<Book> ListThresholdRating = new ArrayList<>(books);
-
-        for (Book book: ListThresholdRating){
+        ArrayList<Book> ListThresholdRating = new ArrayList<>();
+        for (Book book: books){
             if (book.getRating() > minRating){
                 ListThresholdRating.add(book);
             }

@@ -1,6 +1,5 @@
 package ArrayList.SistemaGestioLlibres;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TestBookManager {
@@ -38,53 +37,58 @@ public class TestBookManager {
                 case "a":
                     System.out.println("Please, introduce the id of the new book.");
                     int id = input.nextInt();
+                    input.nextLine();
                     System.out.println("Now, introduce the name of the new book.");
                     String title = input.nextLine();
                     System.out.println("Now, introduce the author: ");
                     String author = input.nextLine();
                     System.out.println("To finish, iontroduce the rating: ");
                     int rating = input.nextInt();
+                    input.nextLine();
 
                     Book book = new Book(id, title, author, rating);
                     manager.addBook(book);
-                    System.out.println("Book added succesfully ");
                     break;
 
                 case "b":
-                    manager.showAllBooks();
+                    System.out.println(manager.showAllBooks());
                     break;
 
                 case "c":
                     System.out.println("Please, introduce the title of the book you wish to find.");
-                    manager.findBookByTitle(input.nextLine());
+                    System.out.println(manager.findBookByTitle(input.nextLine()));
                     break;
 
                 case "d":
                     System.out.println("Please, introduce the name of the author of the book you wish to find.");
-                    manager.findBookByAuthor(input.nextLine());
+                    System.out.println(manager.findBookByAuthor(input.nextLine()));
                     break;
 
                 case "e":
                     System.out.println("Please, introduce the title of the book and the new rating you wish to give.");
                     manager.updateRating(input.nextLine(), input.nextInt());
+                    input.nextLine();
                     break;
 
                 case "f":
-                    manager.listByRating();
+                    System.out.println(manager.listByRating());
                     break;
 
                 case "g":
                     manager.reducedListByRating(input.nextInt());
+                    input.nextLine();
                     break;
 
                 case "h":
                     System.out.println("Please, introduce the minimum rating for books to appear in the following list.");
                     manager.minRatingList(input.nextInt());
+                    input.nextLine();
                     break;
 
                 case "i":
                     System.out.println("Please, introduce the id of the book you wish to remove.");
                     manager.removeBook(input.nextInt());
+                    input.nextLine();
                     break;
 
                 case "j":

@@ -16,22 +16,11 @@ public class PlayerManager {
     }
 
     public void removePlayer(String name) {
-        boolean found = false;
-        for (Player p : players) {
-            if (p.getName().equalsIgnoreCase(name)) {
-                players.remove(p);
-                found = true;
+            players.removeIf(player -> getClass().getName().equalsIgnoreCase(name));
                 System.out.println("Player removed succesfully.");
-                break;
             }
-        }
-        if (!found) {
-            System.out.println("The player was not found therefore it cannot be removed.");
-        }
-    }
 
     public Player findPlayerWithName(String name) {
-        boolean found = false;
         for (Player p : players) {
             if (p.getName().equalsIgnoreCase(name)) return p;
         }
@@ -53,7 +42,7 @@ public class PlayerManager {
     }
 
     public ArrayList<Player> scoreThreshold(int minScore){
-        ArrayList<Player> scoreThreshold = new ArrayList<>(players);
+        ArrayList<Player> scoreThreshold = new ArrayList<>();
         for(Player p : players){
             if (p.getScore() > minScore){
                 scoreThreshold.add(p);
