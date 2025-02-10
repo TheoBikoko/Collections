@@ -1,11 +1,11 @@
 package HashMap.Mobils;
 
-import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class ConjuntMobils {
-     private HashMap<String, Mobil> conjuntMobils;
+    private HashMap<String, Mobil> conjuntMobils;
 
     public ConjuntMobils() {
         this.conjuntMobils = new HashMap<>();
@@ -14,54 +14,89 @@ public class ConjuntMobils {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         ConjuntMobils cm = new ConjuntMobils();
-        cm.afegirMobil(input);
-        cm.treureMobil(input);
-        cm.buscarMovil(input);
 
+        int opcio;
+        do {
+            System.out.println("\nMenú:");
+            System.out.println("1. Afegir mòbil");
+            System.out.println("2. Treure mòbil");
+            System.out.println("3. Buscar mòbil per DNI");
+            System.out.println("4. Buscar DNI per número de mòbil");
+            System.out.println("5. Sortir");
+            System.out.print("Escull una opció: ");
+            opcio = input.nextInt();
+            input.nextLine();
 
+            switch (opcio) {
+                case 1:
+                    cm.afegirMobil(input);
+                    break;
+                case 2:
+                    cm.treureMobil(input);
+                    break;
+                case 3:
+                    cm.buscarMobil(input);
+                    break;
+                case 4:
+                    cm.buscarDni(input);
+                    break;
+                case 5:
+                    System.out.println("Sortint...");
+                    break;
+                default:
+                    System.out.println("Opció no vàlida.");
+            }
+        } while (opcio != 5);
     }
-    public void afegirMobil(Scanner input){
-        System.out.println("Si us plau, afegeixi un DNI");
+
+    public void afegirMobil(Scanner input) {
+        System.out.print("Introdueix el DNI: ");
         String dni = input.nextLine();
-        if (conjuntMobils.containsKey(dni)){
-            System.out.println("El DNI ja ha sigut introduit anteriorment. Si us plau, torni a provar.");
+        if (conjuntMobils.containsKey(dni)) {
+            System.out.println("Aquest DNI ja té un mòbil associat.");
+            return;
         }
-        else {
-            System.out.println("Si us plau, introdueix la marca, model i numero de telefon del mobil a afegir:");
-            Mobil mobil = new Mobil(input.nextLine(), input.nextLine(), input.nextInt());
-            conjuntMobils.put(dni, mobil);
-            System.out.println("Mobil afegit correctament");
-        }
+        System.out.print("Introdueix la marca: ");
+        String marca = input.nextLine();
+        System.out.print("Introdueix el model: ");
+        String model = input.nextLine();
+        System.out.print("Introdueix el número: ");
+        String numero = input.nextLine();
+
+        conjuntMobils.put(dni, new Mobil(marca, model, numero));
+        System.out.println("Mòbil afegit correctament.");
     }
 
-    public void treureMobil(Scanner input){
-        System.out.println("Si us plau, introdueixi el DNI de l'estudiant per a treure el mobil: ");
+    public void treureMobil(Scanner input) {
+        System.out.print("Introdueix el DNI: ");
         String dni = input.nextLine();
-        if (conjuntMobils.containsKey(dni)){
-            conjuntMobils.remove(dni);
-            System.out.println("El mobil s'ha eliminat correctament.");
+        if (conjuntMobils.remove(dni) != null) {
+            System.out.println("Mòbil eliminat correctament.");
+        } else {
+            System.out.println("No s'ha trobat cap mòbil associat a aquest DNI.");
         }
     }
 
-    public Collection<Mobil> buscarMovil(Scanner input){
-        System.out.println("Si us plau, introdueixi el DNI de l'estudiant per buscar el mobil: ");
+    public void buscarMobil(Scanner input) {
+        System.out.print("Introdueix el DNI: ");
         String dni = input.nextLine();
-        if (conjuntMobils.containsKey(dni)){
-            System.out.println("El mobil associat al DNI " + dni + " és el següent: ");
-            return conjuntMobils.values();
+        Mobil mobil = conjuntMobils.get(dni);
+        if (mobil != null) {
+            System.out.println("Mòbil associat: " + mobil);
+        } else {
+            System.out.println("No s'ha trobat cap mòbil associat a aquest DNI.");
         }
-        return null;
     }
 
-//    public Collection<Mobil> buscarDni(Scanner input){
-//        System.out.println("Si us plau, introdueixi el numero de telefon per a trobar el DNI: ");
-//        String numero = input.nextLine();
-//        if (conjuntMobils.containsValue(numero)){
-//            System.out.println("El DNI associat al numero " + numero + " és el següent: ");
-//            return conjuntMobils.ge;
-//        }
-//        return null;
-//    }
-
+    public void buscarDni(Scanner input) {
+        System.out.print("Introdueix el número de mòbil: ");
+        String numero = input.nextLine();
+        for (Map.Entry<String, Mobil> entry : conjuntMobils.entrySet()) {
+            if (entry.getValue().getNumero().equals(numero)) {
+                System.out.println("El número pertany al DNI: " + entry.getKey());
+                return;
+            }
+        }
+        System.out.println("No s'ha trobat cap DNI associat a aquest número.");
+    }
 }
-

@@ -3,9 +3,9 @@ package HashMap.Mobils;
 public class Mobil {
     private String model;
     private String marca;
-    private int numero;
+    private String numero;
 
-    public Mobil(String marca, String model, int numero) {
+    public Mobil(String marca, String model, String numero) {
         this.marca = marca;
         this.model = model;
         this.numero = numero;
@@ -27,11 +27,11 @@ public class Mobil {
         this.model = model;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
