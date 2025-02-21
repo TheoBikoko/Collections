@@ -16,37 +16,35 @@ public class ConjuntMobils {
         ConjuntMobils cm = new ConjuntMobils();
 
         int opcio;
-        do {
-            System.out.println("\nMenú:");
-            System.out.println("1. Afegir mòbil");
-            System.out.println("2. Treure mòbil");
-            System.out.println("3. Buscar mòbil per DNI");
-            System.out.println("4. Buscar DNI per número de mòbil");
-            System.out.println("5. Sortir");
-            System.out.print("Escull una opció: ");
-            opcio = input.nextInt();
-            input.nextLine();
+        System.out.println("Menú:");
+        System.out.println("1. Afegir mòbil");
+        System.out.println("2. Treure mòbil");
+        System.out.println("3. Buscar mòbil per DNI");
+        System.out.println("4. Buscar DNI per número de mòbil");
+        System.out.println("5. Sortir");
+        System.out.print("Escull una opció: ");
+        opcio = input.nextInt();
+        input.nextLine();
 
-            switch (opcio) {
-                case 1:
-                    cm.afegirMobil(input);
-                    break;
-                case 2:
-                    cm.treureMobil(input);
-                    break;
-                case 3:
-                    cm.buscarMobil(input);
-                    break;
-                case 4:
-                    cm.buscarDni(input);
-                    break;
-                case 5:
-                    System.out.println("Sortint...");
-                    break;
-                default:
-                    System.out.println("Opció no vàlida.");
-            }
-        } while (opcio != 5);
+        switch (opcio) {
+            case 1:
+                cm.afegirMobil(input);
+                break;
+            case 2:
+                cm.treureMobil(input);
+                break;
+            case 3:
+                cm.buscarMobil(input);
+                break;
+            case 4:
+                cm.buscarDni(input);
+                break;
+            case 5:
+                System.out.println("Sortint...");
+                break;
+            default:
+                System.out.println("Opció no vàlida.");
+        }
     }
 
     public void afegirMobil(Scanner input) {

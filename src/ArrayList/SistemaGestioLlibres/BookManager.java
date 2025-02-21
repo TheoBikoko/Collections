@@ -51,7 +51,7 @@ public class BookManager {
     public ArrayList<Book> listByRating() {
         ArrayList<Book> booksByRating = new ArrayList<>(books);
         booksByRating.sort(Comparator.comparingInt(Book::getRating).reversed());
-        System.out.println("The rating lis is the following:");
+        System.out.println("The rating list is the following:");
         return booksByRating;
     }
 
